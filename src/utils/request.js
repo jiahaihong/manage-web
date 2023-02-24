@@ -1,13 +1,12 @@
 /*
  * @Author: your name
  * @Date: 2020-12-03 14:37:54
- * @LastEditTime: 2022-07-13 14:29:22
+ * @LastEditTime: 2023-02-24 13:58:24
  * @LastEditors: Please set LastEditors
  * @Description: 封装axios文件
  */
 import axios from 'axios'
 import Cookies from "js-cookie";
-// import { JUMP_LOGIN_URL } from '@/utils/auth'
 import { Message, Notification } from 'element-ui'
 import store from '../store'
 
@@ -66,7 +65,6 @@ service.interceptors.response.use(
        * @description: 402：代表特殊错误码，res.msg是json格式的数组
        */
       if ([405, 403].includes(res.code)) {
-        window.localStorage.clear()
         store.dispatch('user/logout')
         return
       }

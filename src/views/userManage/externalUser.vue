@@ -72,7 +72,6 @@
       <el-row>
         <el-col :span="4">
           <el-button
-            v-show="permissionButtons.includes('addUser')"
             type="primary"
             size="small"
             :loading="isLoading"
@@ -117,8 +116,7 @@
             >-->
             <el-button
               v-show="
-                permissionButtons.includes('updateUser') &&
-                  scope.row.status == 1
+                scope.row.status == 1
               "
               size="mini"
               type="primary"
@@ -128,8 +126,7 @@
             </el-button>
             <el-button
               v-show="
-                permissionButtons.includes('resetPassword') &&
-                  scope.row.status == 1
+                scope.row.status == 1
               "
               size="mini"
               type="danger"
@@ -139,8 +136,7 @@
             </el-button>
             <el-button
               v-show="
-                permissionButtons.includes('resignUser') &&
-                  scope.row.status == 1
+                scope.row.status == 1
               "
               size="mini"
               type="danger"

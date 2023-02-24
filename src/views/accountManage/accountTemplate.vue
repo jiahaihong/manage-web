@@ -106,14 +106,12 @@
       </div>
       <div class="global-button-group">
         <el-button
-          v-show="permissionButtons.includes('bindAccount')"
           type="primary"
           @click="openRelation()"
         >
           {{ functionCodesOptions.bindAccount }}
         </el-button>
         <el-button
-          v-show="permissionButtons.includes('modifyAccountStatus')"
           size="small"
           @click="openEditAccountStatus()"
         >
@@ -121,51 +119,43 @@
         </el-button>
 
         <el-button
-          v-show="permissionButtons.includes('modifyAccountOperating')"
           @click="openMarkAccountDialog()"
         >
           {{ functionCodesOptions.modifyAccountOperating }}
         </el-button>
         <el-button
-          v-show="routeName === 'GGL' && permissionButtons.includes('updateDivisionId')"
           @click="openUpdateDicisionId()"
         >
           {{ functionCodesOptions.updateDivisionId }}
         </el-button>
 
         <el-button
-          v-show="routeName === 'GGL' && permissionButtons.includes('updateParentId')"
           @click="openUpdateParentId()"
         >
           {{ functionCodesOptions.updateParentId }}
         </el-button>
         <el-button
-          v-show="permissionButtons.includes('modifyAccountAdType')"
           @click="openUpdateAdvDialog()"
         >
           {{ functionCodesOptions.modifyAccountAdType }}
         </el-button>
         <el-button
-          v-show="permissionButtons.includes('modifyAccountBc')"
           @click="openAccountBcType()"
         >
           {{ functionCodesOptions.modifyAccountBc }}
         </el-button>
         <el-button
-          v-show="permissionButtons.includes('modifyAccountDomain')"
           @click="openAccountDomain()"
         >
           {{ functionCodesOptions.modifyAccountDomain }}
         </el-button>
         <div style="float: right">
           <el-button
-            v-show="permissionButtons.includes('importAccount')"
             @click="handleOnSelectFile"
           >
             {{ functionCodesOptions.importAccount }}
           </el-button>
           <el-button
-            v-show="permissionButtons.includes('exportAccount')"
             :loading="isExportLoading"
             @click="handleExport()"
           >

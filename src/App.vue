@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-12-03 14:37:54
- * @LastEditTime: 2021-10-19 11:38:35
+ * @LastEditTime: 2023-02-24 13:44:09
  * @LastEditors: Please set LastEditors
  * @Description: 主文件
 -->
@@ -13,7 +13,6 @@
 
 <script>
 import Cookies from "js-cookie";
-// import { JUMP_LOGIN_URL } from '@/utils/auth'
 export default {
   name: "App",
   created() {

@@ -2,7 +2,7 @@ import router from "@/router";
 import Layout from "@/layout";
 import { notFoundPage } from "@/router";
 
-import { indexPath, accountTemplate } from "@/router/routerPath";
+import { indexPath } from "@/router/routerPath";
 import { $isEmpty } from "@/utils/methods";
 import { login, logout } from "@/api/auth";
 import { getCurrentUserInfo, getAvatar } from "@/api/user";
@@ -20,20 +20,22 @@ import Cookies from "js-cookie";
 export function filterPermissionRoutes(permission) {
   const routes = [];
   permission.forEach(e => {
-    const routerItem = {
-      path: `/${e.routeName}`,
-      component: Layout
-    };
+    const routerItem = {};
 
     if (e.resources && e.resources.length > 0) {
-      routerItem.name = `${e.routeName}`;
-      routerItem.meta = {
-        title: e.name,
-        icon: "example"
-      };
-      routerItem.redirect = "noRedirect";
-      routerItem.alwaysShow = true;
-      routerItem.children = [];
+      Object.assign(routerItem, {
+        path: `/${e.routeName}`,
+        component: Layout,
+        name: `${e.routeName}`,
+        meta: {
+          title: e.name,
+          icon: "example"
+        },
+        redirect: "noRedirect",
+        alwaysShow: true,
+        children: [],
+      })
+
       e.resources.forEach(c => {
         let component = null;
         /**
@@ -54,9 +56,7 @@ export function filterPermissionRoutes(permission) {
         /**
          * @description: 账号模板
          */
-        if (c.webType === 3) {
-          component = accountTemplate;
-        } else if ($isEmpty(singleRoute)) {
+        if ($isEmpty(singleRoute)) {
           component = notFoundPage;
         } else {
           component = singleRoute.component;
@@ -94,21 +94,6 @@ export function filterPermissionRoutes(permission) {
           }
         });
       });
-
-      // /**
-      //  * @description: 开发环境用
-      //  * @param {*} e
-      //  * @return {*}
-      //  */
-      // if (e.routeName === 'systemManage') {
-      //   routerItem.children.push(
-      //   {
-      //     path: `/systemManage/permissionPack`,
-      //     component: () => import(`@/views/systemManage/permissionPack`),
-      //     name: `permissionPack`,
-      //     meta: { title: '权限包',icon: "example", btn: [] },
-      //   })
-      // }
     }
     routes.push(routerItem);
   });
@@ -159,19 +144,28 @@ const actions = {
   // 菜单接口
   async getResource({ commit, state }) {
     const data = [
-      { "id": 10146, "name": "用户管理", "enName": "userManage", "routeName": "userManage", "resources": [
-        {
-          "id": 10147, "name": "外部用户", "enName": "externalUserManage", "routeName": "externalUserManage", "resources": [], "tabs": null, "sort": 1, "href": "/user/pageOutUserInfos", "parentId": 10146, "type": 2, "webType": 1, "icon": null }], "tabs": null, "buttons": null, "sort": 3, "href": "/userManage", "parentId": 6, "type": 1, "webType": 1, "icon": null
-      },
-
-      {
-        "id": 105, "name": "账号管理", "enName": "accountManage", "routeName": "accountManage",
-        "resources": [{ "id": 106, "name": "Meta账号", "enName": "facebook", "routeName": "FBK", "resources": [], "tabs": null, "sort": 1, "href": "/accountManage/facebook", "parentId": 105, "type": 2, "webType": 3, "icon": null }],
-        "tabs": null, "buttons": null, "sort": 4, "href": "/accountManage", "parentId": 6, "type": 1, "webType": 1, "icon": null },
-
       {
         "id": 114, "name": "系统管理", "enName": "systemManage", "routeName": "systemManage",
-        "resources": [{ "id": 136, "name": "媒体配置", "enName": "mediaConfig", "routeName": "mediaConfig", "resources": [], "tabs": null, "sort": 1, "href": "/systemManage/mediaConfig", "parentId": 114, "type": 2, "webType": 1, "icon": null }, { "id": 10227, "name": "部门配置", "enName": "deptConfig", "routeName": "deptConfig", "resources": [], "tabs": null, "sort": 2, "href": "/systemManage/deptConfig", "parentId": 114, "type": 2, "webType": 1, "icon": null }, { "id": 10384, "name": "菜单配置", "enName": "menuConfig", "routeName": "menuConfig", "resources": [], "tabs": null, "sort": 3, "href": "", "parentId": 114, "type": 2, "webType": 1, "icon": "" }, { "id": 10391, "name": "权限包配置", "enName": "permissionPack", "routeName": "permissionPack", "resources": [], "tabs": null, "sort": 4, "href": "", "parentId": 114, "type": 2, "webType": 1, "icon": "" }, { "id": 115, "name": "操作日志", "enName": "log", "routeName": "log", "resources": [], "tabs": null, "sort": 5, "href": "/systemManage/log", "parentId": 114, "type": 2, "webType": 1, "icon": null }, { "id": 11115, "name": "应用中心", "enName": "InterfaceAudit", "routeName": "InterfaceAudit", "resources": [], "tabs": null, "sort": 6, "href": "", "parentId": 114, "type": 2, "webType": 1, "icon": "" }],
+        "resources": [
+          {
+            "id": 106, "name": "Meta账号", "enName": "facebook", "routeName": "FBK", "resources": [], "tabs": null, "sort": 1, "href": "/accountManage/facebook", "parentId": 105, "type": 2, "webType": 3, "icon": null
+          },
+          {
+            "id": 10147, "name": "用户列表", "enName": "externalUserManage", "routeName": "externalUserManage", "resources": [], "tabs": null, "sort": 1, "href": "/user/pageOutUserInfos", "parentId": 10146, "type": 2, "webType": 1, "icon": null
+          },
+          {
+            "id": 136, "name": "媒体配置", "enName": "mediaConfig", "routeName": "mediaConfig", "resources": [], "tabs": null, "sort": 1, "href": "/systemManage/mediaConfig", "parentId": 114, "type": 2, "webType": 1, "icon": null
+          },
+          {
+            "id": 10227, "name": "部门配置", "enName": "deptConfig", "routeName": "deptConfig", "resources": [], "tabs": null, "sort": 2, "href": "/systemManage/deptConfig", "parentId": 114, "type": 2, "webType": 1, "icon": null
+          },
+          {
+            "id": 10384, "name": "菜单配置", "enName": "menuConfig", "routeName": "menuConfig", "resources": [], "tabs": null, "sort": 3, "href": "", "parentId": 114, "type": 2, "webType": 1, "icon": ""
+          },
+          {
+            "id": 115, "name": "操作日志", "enName": "log", "routeName": "log", "resources": [], "tabs": null, "sort": 5, "href": "/systemManage/log", "parentId": 114, "type": 2, "webType": 1, "icon": null
+          },
+        ],
         "tabs": null, "buttons": null, "sort": 8, "href": "/systemManage", "parentId": 6, "type": 1, "webType": 1, "icon": null }
     ]
     const permissionRoutes = filterPermissionRoutes(data);
@@ -194,10 +188,10 @@ const actions = {
       Cookies.remove("TGC");
       if (res.data) {
         // 内部用户idaas退出
-        window.location.href = res.data;
+        // window.location.href = res.data;
       } else {
         // 外部用户退出
-        JUMP_LOGIN_URL();
+        // JUMP_LOGIN_URL();
       }
     } catch (error) {
       console.warn(error);

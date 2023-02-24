@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-12-03 14:37:54
- * @LastEditTime: 2023-02-24 11:20:25
+ * @LastEditTime: 2023-02-24 14:22:04
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \yeahmedia-webc:\AAPerson\Bjob\business-admin\src\router\index.js
@@ -20,11 +20,11 @@ export const notFoundPage = () => import("@/views/404");
  * all roles can be accessed
  */
 export const constantRoutes = [
-  // {
-  //   path: '/login',
-  //   component: () => import('@/views/login/index'),
-  //   hidden: true
-  // },
+  {
+    path: '/login',
+    component: () => import('@/views/login/index'),
+    hidden: true
+  },
   {
     path: "/",
     component: Layout,
