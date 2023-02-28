@@ -1,89 +1,121 @@
-# vue-admin-template
+# vue+antd搭建后台管理界面模版（PC端）
 
-English | [简体中文](./README-zh.md)
+<img src="./src/static/login.png" width="100%" height="519px"/>  
 
-> A minimal vue admin template with Element UI & axios & iconfont & permission control & lint
 
-**Live demo:** http://panjiachen.github.io/vue-admin-template
+#### 技术栈
+vue2 + vuex + vue-router + webpack + ES6/7 + axios + antd + 阿里图标iconfont
 
-**The current version is `v4.0+` build on `vue-cli`. If you want to use the old version , you can switch branch to [tag/3.11.0](https://github.com/PanJiaChen/vue-admin-template/tree/tag/3.11.0), it does not rely on `vue-cli`**
+#### 项目预览
+[http://nmgwap.gitee.io/vue-antd/#/login](http://nmgwap.gitee.io/vue-antd/#/login)
 
-## Build Setup
 
-```bash
-# clone the project
-git clone https://github.com/PanJiaChen/vue-admin-template.git
+#### 说明
 
-# enter the project directory
-cd vue-admin-template
+>  账号密码不为空即可
 
-# install dependency
-npm install
+>  本项目主要用于熟悉如何用 vue2 架构一个后端管理平台项目
 
-# develop
-npm run dev
-```
+>  为了方便后期修改使用，模拟数据在页面中，具体修改看下面【强调】
 
-This will automatically open http://localhost:9528
+>  如果对您有帮助，您可以点右上角 "Star" 支持一下 谢谢！ ^_^
 
-## Build
+>  或者您可以 "follow" 一下，我会不断开源更多的有趣的项目
 
-```bash
-# build for test environment
-npm run build:stage
+>  开发环境 w7  Chrome 61
 
-# build for production environment
-npm run build:prod
-```
+>  如有问题请直接在 Issues 中提，或者您发现问题并有非常好的解决方案，欢迎 PR 👍
 
-## Advanced
+
+#### 目录结构
+------------------------
 
 ```bash
-# preview the release environment effect
-npm run preview
-
-# preview the release environment effect + static resource analysis
-npm run preview -- --report
-
-# code format check
-npm run lint
-
-# code format check and auto fix
-npm run lint -- --fix
+├── /public/         # 公共文件
+├── /src/            # 源码目录
+│ ├── /api/          # 请求
+│ ├── /assets/       # 组件静态资源(图片)
+│ ├── /components/   # 公共组件
+| ├── /languages/    # 多语言配置
+| ├── /minxins/      # minxins
+│ ├── /router/       # 路由配置
+│ ├── /styles/       # 公共样式
+│ ├── /views/        # 路由组件(页面维度)
+│ ├── /utils/        # 公共方法
+│ ├── App.vue        # 组件入口
+│ └── main.js        # 程序入口
+├── .babelrc         # ES6语法编译配置
+├── .editorconfig    # 定义代码格式
+├── .eslintignore    # ES6规范忽略文件
+├── .eslintrc.js     # ES6语法规范配置
+├── .gitignore       # git忽略文件
+├── package.json     # 项目依赖
+└── README.md        # 项目文档
 ```
 
-Refer to [Documentation](https://panjiachen.github.io/vue-element-admin-site/guide/essentials/deploy.html) for more information
+#### 强调
 
-## Demo
+项目请求已经改为假数据，例如：
+``` bash
 
-![demo](https://github.com/PanJiaChen/PanJiaChen.github.io/blob/master/images/demo.gif)
+数据为mock模拟数据
+列表获取功能可用，修改删除功能已开发完成，需和后台对接相应字段即可
 
-## Extra
+```
 
-If you want router permission && generate menu by user roles , you can use this branch [permission-control](https://github.com/PanJiaChen/vue-admin-template/tree/permission-control)
 
-For `typescript` version, you can use [vue-typescript-admin-template](https://github.com/Armour/vue-typescript-admin-template) (Credits: [@Armour](https://github.com/Armour))
 
-## Related Project
+#### 部分截图
+------------------------
 
-- [vue-element-admin](https://github.com/PanJiaChen/vue-element-admin)
+登录
+![登录](./src/static/login.png "登录")
 
-- [electron-vue-admin](https://github.com/PanJiaChen/electron-vue-admin)
+首页
+![首页](./src/static/index.png "首页")
 
-- [vue-typescript-admin-template](https://github.com/Armour/vue-typescript-admin-template)
+菜单
+![菜单](./src/static/menu.png "菜单")
 
-- [awesome-project](https://github.com/PanJiaChen/vue-element-admin/issues/2312)
+角色
+![角色](./src/static/role.png "角色")
 
-## Browsers support
+用户
+![用户](./src/static/user.png "用户")
 
-Modern browsers and Internet Explorer 10+.
+字典
+![字典](./src/static/zd.png "字典")
 
-| [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png" alt="IE / Edge" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>IE / Edge | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png" alt="Firefox" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Firefox | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png" alt="Chrome" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Chrome | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari/safari_48x48.png" alt="Safari" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Safari |
-| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| IE10, IE11, Edge                                                                                                                                                                                                | last 2 versions                                                                                                                                                                                                   | last 2 versions                                                                                                                                                                                               | last 2 versions                                                                                                                                                                                               |
 
-## License
 
-[MIT](https://github.com/PanJiaChen/vue-admin-template/blob/master/LICENSE) license.
+#### 运行项目
+------------------------
+```
+yarn install
+```
 
-Copyright (c) 2017-present PanJiaChen
+### Compiles and hot-reloads for development
+```
+yarn serve
+```
+
+### Compiles and minifies for production
+```
+yarn build
+```
+
+### Lints and fixes files
+```
+yarn lint
+```
+
+#### 项目源码地址：
+------------------------
+
+码云地址：https://gitee.com/nmgwap/vue-antd  
+
+
+#### 微信公众号
+------------------------  
+
+<img src="/src/static/wx.jpg"  width = "270" height = "270"/>
