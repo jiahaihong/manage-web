@@ -36,13 +36,13 @@
         />
         <div class="user-head">
           <!-- 切换语言 -->
-          <div class="toggle">
+          <!-- <div class="toggle">
             <a-select :defaultValue="defaultValue" @change="handleChange">
               <a-select-option value="cn">中文</a-select-option>
               <a-select-option value="en">English</a-select-option>
               <a-select-option value="ja">日本語</a-select-option>
             </a-select>
-          </div>
+          </div> -->
           <!-- 用户信息 -->
           <a-dropdown>
             <a class="ant-dropdown-link" href="#">
@@ -81,7 +81,6 @@
   </a-layout>
 </template>
 <script>
-import { GetMenu } from "../api/admin/token";
 import { disposereq } from "@/utils/util";
 import router from "@/router";
 import Layout from "@/views/index/";
@@ -90,44 +89,54 @@ export default {
     return {
       collapsed: false,
       menu: [],
-      UserInfo: {},
+      UserInfo: {
+        username: '测试'
+      },
       defaultValue: localStorage.lang
     };
   },
   created() {
     this.getMenu();
     //  获取用户信息
-    this.UserInfo = JSON.parse(localStorage.getItem("UserInfo"));
+    // this.UserInfo = JSON.parse(localStorage.getItem("UserInfo"));
   },
   methods: {
     // 获取菜单
     getMenu() {
-      GetMenu()
-        .then(res => {
-          if (res.code == 0) {
-            this.formatData(
-              localStorage.lang == "cn"
-                ? res.data.cn
-                : localStorage.lang == "en"
-                ? res.data.en
-                : res.data.ja
-            );
-            let asyncRouters = this.routerPackag(
-              localStorage.lang == "cn"
-                ? res.data.cn
-                : localStorage.lang == "en"
-                ? res.data.en
-                : res.data.ja
-            );
-            asyncRouters.push({ path: "*", redirect: "/index" });
-            router.addRoutes(asyncRouters);
-          } else {
-            this.$message.info(err);
-          }
-        })
-        .catch(err => {
-          disposereq(this, err);
-        });
+      const data = [
+        {
+          "id":1000,"parentId":-1,
+          "icon":"iconquanxianguanli","name":"权限管理","spread":false,"path":"/upms","component":"Layout","authority":null,"redirect":null,"keepAlive":"0","code":null,"type":"0","label":"权限管理","sort":0,
+          "children":[
+            {
+              "id":1100,
+              "parentId":1000,
+              "children":[],
+              "icon":"iconyonghuguanli",
+              "name":"用户管理","spread":false,"path":"user","component":"views/authority/userManage",
+              "authority":null,"redirect":null,"keepAlive":"0","code":null,"type":"0","label":"用户管理","sort":1
+            },
+            {
+              "id":1300,"parentId":1000,"children":[],"icon":"iconjiaoseguanli","name":"角色管理","spread":false,"path":"role","component":"views/authority/roleManage","authority":null,"redirect":null,"keepAlive":"0","code":null,"type":"0","label":"角色管理","sort":3
+            },
+            {
+              "id":1200,"parentId":1000,"children":[],"icon":"iconcaidanguanli","name":"菜单管理","spread":false,"path":"menu","component":"views/admin/menu/index","authority":null,"redirect":null,"keepAlive":"0","code":null,"type":"0","label":"菜单管理","sort":2},
+            
+            {
+              "id":1400,"parentId":1000,"children":[],"icon":"iconbumenguanli","name":"部门管理","spread":false,"path":"dept","component":"views/admin/dept/index","authority":null,"redirect":null,"keepAlive":"0","code":null,"type":"0","label":"部门管理","sort":4}
+          ],
+        },
+        {
+          "id":2000,"parentId":-1,
+          "children":[{"id":2100,"parentId":2000,"children":[],"icon":"iconrizhiguanli2","name":"日志管理","spread":false,"path":"log","component":"views/admin/log/index","authority":null,"redirect":null,"keepAlive":"0","code":null,"type":"0","label":"日志管理","sort":5},{"id":2200,"parentId":2000,"children":[],"icon":"iconzidianguanli","name":"字典管理","spread":false,"path":"dict","component":"views/admin/dict/index","authority":null,"redirect":null,"keepAlive":"0","code":null,"type":"0","label":"字典管理","sort":6},{"id":2300,"parentId":2000,"children":[],"icon":"icondaimashengcheng","name":"代码生成","spread":false,"path":"gen","component":"views/gen/index","authority":null,"redirect":null,"keepAlive":"0","code":null,"type":"0","label":"代码生成","sort":8},{"id":2400,"parentId":2000,"children":[],"icon":"icondishuizhongduanguanli","name":"终端管理","spread":false,"path":"client","component":"views/admin/client/index","authority":null,"redirect":null,"keepAlive":"0","code":null,"type":"0","label":"终端管理","sort":9},{"id":2600,"parentId":2000,"children":[],"icon":"iconlingpai","name":"令牌管理","spread":false,"path":"token","component":"views/admin/token/index","authority":null,"redirect":null,"keepAlive":"0","code":null,"type":"0","label":"令牌管理","sort":11}],
+          "icon":"iconxitongguanli","name":"系统管理","spread":false,"path":"/admin","component":"Layout","authority":null,"redirect":null,"keepAlive":"0","code":null,"type":"0","label":"系统管理","sort":1
+        }
+      ]
+      this.formatData(data);
+      let asyncRouters = this.routerPackag(data);
+      asyncRouters.push({ path: "*", redirect: "/index" });
+      router.addRoutes(asyncRouters);
+          // disposereq(this, err);
     },
     // 路由数据重新封装
     routerPackag(routers) {
@@ -165,6 +174,7 @@ export default {
             data[i].path + "/" + data[i].children[j].path;
         }
       }
+      console.warn(data)
       this.menu = data;
     },
     headClick(type) {

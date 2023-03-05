@@ -7,7 +7,7 @@ const routes = [{
   path: '/login',
   name: '登录页',
   component: () =>
-    import( /* webpackChunkName: "page" */ '@/views/login'),
+    import( /* webpackChunkName: "page" */ '@/views/authority/login'),
   meta: {
     requireAuth: false,
   },
@@ -23,7 +23,7 @@ const routes = [{
     path: '/index',
     name: '首页',
     component: () =>
-      import( /* webpackChunkName: "page" */ '@/views/wel'),
+      import( /* webpackChunkName: "page" */ '@/views/dashboard/index'),
     meta: {
       requireAuth: true,
     }

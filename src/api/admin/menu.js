@@ -7,10 +7,6 @@ import {
     request
 } from '../../utils/axiosFun';
 
-export function GetMenu() {
-    return request('get', '/admin/menu', {})
-}
-
 export function fetchMenuTree(query) {
     return request('get', '/admin/menu/tree', query, "Y")
 }
