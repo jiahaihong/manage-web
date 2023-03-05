@@ -1,0 +1,126 @@
+$color-blue: #4278ff;
+$color-green: #22ac35;
+$color-lightgreen: #f2faf3;
+$color-green3: #c7eacc;
+$color-green5: #42b853;
+$color-green7: #199b28;
+$color-yellow: #fbbc00;
+$color-red: #e84e54;
+$color-red5: #e96469;
+$color-grey: #cbd5ee;
+$color-deepgray: #2d3446;
+$color-grey2: #f7f9fe;
+$color-grey3: #f3f6fe;
+$color-grey4: #e1e8f9;
+$color-grey6: #9ca9cb;
+$color-grey7: #677392;
+$color-white: #ffffff;
+$color-lightgray: #ccd0d5;
+$color-font-grey: #677392;
+$color-hover-bg: #f3f6fe;
+$menu-select-bg: #f3f6fe;
+$menu-noselect-font: #677392;
+
+.c-white {
+  color: $color-white !important;
+}
+
+.c-blue {
+  color: $color-blue !important;
+}
+
+.c-yellow {
+  color: $color-yellow !important;
+}
+
+.c-green {
+  color: $color-green !important;
+}
+
+.c-red {
+  color: #e84e54 !important;
+}
+
+.c-grey {
+  color: $color-grey !important;
+}
+
+.c-deepgray {
+  color: $color-deepgray !important;
+}
+
+.c-lightgray {
+  color: $color-lightgray !important;
+}
+
+// 状态
+.status-success {
+  //成功
+  color: #42c798;
+}
+
+.status-doing {
+  //处理中
+  color: #f3be3c;
+}
+
+.status-wait {
+  //待处理
+  color: #1aa0fe;
+}
+
+.status-wait {
+  //待处理
+  color: #1aa0fe;
+}
+
+.status-fail {
+  //处理失败
+  color: #e7685d;
+}
+
+// 状态dot
+.status-success-dot {
+  //成功
+  background: #42c798;
+}
+
+.status-doing-dot {
+  //处理中
+  background: #f3be3c;
+}
+
+.status-wait-dot {
+  //待处理
+  background: #1aa0fe;
+}
+
+.status-fail-dot {
+  //处理失败
+  background: #e7685d;
+}
+
+.status-default-dot {
+  background: #d9d9d9;
+}
+
+// 状态背景
+.status-success-bg {
+  //成功
+  background: #e5f6f0;
+}
+
+.status-doing-bg {
+  //处理中
+  background: #fff9ea;
+}
+
+.status-wait-bg {
+  //待处理
+  background: #e6f5ff;
+}
+
+.status-fail-bg {
+  //处理失败
+  background: #ffefed;
+}

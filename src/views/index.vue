@@ -113,11 +113,27 @@ export default {
               "parentId":1000,
               "children":[],
               "icon":"iconyonghuguanli",
-              "name":"用户管理","spread":false,"path":"user","component":"views/authority/userManage",
+              "name":"user","spread":false,"path":"user","component":"views/authority/user",
+              "authority":null,"redirect":null,"keepAlive":"0","code":null,"type":"0","label":"user","sort":1
+            },
+            {
+              "id":1100,
+              "parentId":1000,
+              "children":[],
+              "icon":"iconyonghuguanli",
+              "name":"role","spread":false,"path":"role","component":"views/authority/role",
+              "authority":null,"redirect":null,"keepAlive":"0","code":null,"type":"0","label":"role","sort":1
+            },
+            {
+              "id":1100,
+              "parentId":1000,
+              "children":[],
+              "icon":"iconyonghuguanli",
+              "name":"用户管理","spread":false,"path":"userManage","component":"views/authority/userManage",
               "authority":null,"redirect":null,"keepAlive":"0","code":null,"type":"0","label":"用户管理","sort":1
             },
             {
-              "id":1300,"parentId":1000,"children":[],"icon":"iconjiaoseguanli","name":"角色管理","spread":false,"path":"role","component":"views/authority/roleManage","authority":null,"redirect":null,"keepAlive":"0","code":null,"type":"0","label":"角色管理","sort":3
+              "id":1300,"parentId":1000,"children":[],"icon":"iconjiaoseguanli","name":"角色管理","spread":false,"path":"roleManage","component":"views/authority/roleManage","authority":null,"redirect":null,"keepAlive":"0","code":null,"type":"0","label":"角色管理","sort":3
             },
             {
               "id":1200,"parentId":1000,"children":[],"icon":"iconcaidanguanli","name":"菜单管理","spread":false,"path":"menu","component":"views/admin/menu/index","authority":null,"redirect":null,"keepAlive":"0","code":null,"type":"0","label":"菜单管理","sort":2},

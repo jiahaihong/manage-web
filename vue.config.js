@@ -9,6 +9,18 @@ const name = "客户管理中心"; // page title
 
 // const isBuild = process.env.NODE_ENV === "production"; // 判断 打包环境
 const isBuild = true; // 判断 打包环境
+
+// 测试接口
+const proxy = {
+  /**
+   * @description: 测试环境
+   * @param {*}
+   * @return {*}
+   */
+  // target: `http://test.business.yeahmobi.com/` // test环境
+  target: `http://dev.business.yeahmobi.com/` // dev环境
+};
+
 module.exports = {
   publicPath: "/",
   // eslint校验
@@ -16,7 +28,14 @@ module.exports = {
   productionSourceMap: false,
   // 配置转发代理
   devServer: {
+    port: 8080,
+    disableHostCheck: true,
     proxy: {
+      "/api": {
+        target: proxy.target,
+        changeOrigin: true,
+        ws: true
+      },
       '/auth': {
         target: url,
         ws: true,
@@ -72,6 +91,16 @@ module.exports = {
         pathRewrite: {
           '^/iot': '/iot'
         }
+      }
+    }
+  },
+  css: {
+    loaderOptions: {
+      sass: {
+        prependData: `
+          @import"@/styles/color.scss";
+          @import"@/styles/mixins.scss";
+        `
       }
     }
   },
